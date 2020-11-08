@@ -1,0 +1,289 @@
+html
+    font-family: 'Merriweather', 'Montserrat', 'Raleway', sans-serif
+
+.promo
+    padding: 64px 0 195px 0
+    min-height: 805px
+    background-color: #eff0f2;
+    &-logo
+        width: 113px
+        height: 46px
+        border: 5px solid black
+        img
+            display: block
+            margin: 0 auto
+            margin-top: 8px
+    &-title
+        margin-top: 206px
+        text-shadow: 4px 8px 10px rgba(0, 0, 0, 0.24)
+        color: #505050
+        font-family: Montserrat
+        font-size: 45px
+        font-weight: 700
+        text-align: center
+        text-transform: uppercase
+        span
+            width: 255px
+            display: inline-block
+            background-color: rgba(118, 244, 234, 0.5)
+    &-btn
+        margin: 0 auto
+        margin-top: 150px
+        width: 232px
+        height: 53px
+        display: block
+        opacity: 0.75
+        color: #000000
+        font-family: Montserrat
+        font-size: 18px
+        font-weight: 400
+        text-transform: uppercase
+        letter-spacing: 2.16px
+        border: 2px solid #000000
+        outline: none
+        &:hover
+            background-color: #505050
+            border: 2px solid #505050
+            opacity: 0.75
+            transition: 0.3s all
+            color: #ffffff
+    &-juice
+        position: relative
+        &-cork-img
+            position: absolute
+            right: 98px
+            top: -17px
+        &-glass-img
+            position: absolute
+            right: 93px
+            top: -25px
+
+.about
+    min-height: 985px
+    padding: 129px 0 166px  0
+    background-color: #f8fafa
+    .row
+        margin-top: 147px
+    img
+        box-shadow: 0 0 30px rgba(20, 20, 21, 0.13)
+        background-color: #e4e5e8
+    &-text-block-1
+        margin-top: 5px
+        margin-left: 40px
+        &-title
+            opacity: 0.75
+            color: #000000
+            font-family: Merriweather
+            font-size: 20px
+            line-height: 20px
+            font-weight: 700
+            text-transform: uppercase
+        &-text
+            padding-top: 31px
+            width: 474px
+            opacity: 0.74
+            color: #000000
+            font-family: Raleway
+            font-size: 16px
+            font-weight: 400
+            line-height: 28px
+            text-align: justify
+
+    &-text-block-2
+        margin-top: 38px
+        margin-left: 40px
+        &-title
+            opacity: 0.75
+            color: #000000
+            font-family: Merriweather
+            font-size: 20px
+            line-height: 18px
+            font-weight: 700
+            text-transform: uppercase
+        &-text
+            padding-top: 27px
+            width: 469px
+            opacity: 0.74
+            color: #000000
+            font-family: Raleway
+            font-size: 16px
+            font-weight: 400
+            line-height: 28px
+            text-align: justify
+
+.global-title
+    opacity: 0.9
+    color: #000000
+    font-family: Montserrat
+    font-size: 38px
+    font-weight: 700
+    text-align: center
+    text-transform: uppercase
+    letter-spacing: 2.28px
+
+.global-undertitle
+    opacity: 0.62
+    color: #000000
+    font-family: Merriweather
+    font-size: 18px
+    font-weight: 400
+    text-align: center
+    text-transform: uppercase
+    letter-spacing: 1.08px
+
+.featured
+    min-height: 1166px
+    padding: 129px 0 125px 0
+    .rows-wrapper
+        margin-top: 122px
+        .padding
+            margin-top: 13px
+
+.team
+    min-height: 1360px
+    padding: 99px 0 187px 0
+    background-color: #f9fbfb
+    .rows-wrapper
+        margin-top: 123px
+        .padding
+            margin-top: 14px
+    .col-md-4
+        position: relative
+    .popup:hover
+        &::after
+            content: ''
+            position: absolute
+            border: 16px solid transparent
+            border-bottom: 30px solid #6df6eb
+            opacity: 0.97
+            bottom: 243px
+            left: 40px
+        &::before
+            content: ''
+            position: absolute
+            bottom: 15px
+            right: 13px
+            display: block
+            width: 335px
+            height: 241px
+            padding: 43px 54px 42px 38px
+            transition: 1s all
+            background-color: #6df6eb
+            box-shadow: 3px 6px 16px rgba(20, 20, 21, 0.18)
+            opacity: 0.98
+
+
+.contacts
+    min-height: 704px
+    padding: 121px 0 123px 0
+    background: url('../img/contacts.png') rgba(248, 250, 251, 0.67) center (center / cover) no-repeat
+    .container
+        padding-left: 0
+        padding-right: 0
+    .contact-us
+        display: inline-block
+        vertical-align: top
+        width: 614px
+        height: 460px
+        margin-right: 20px
+        padding: 47px 33px 38px 31px
+        box-shadow: 0 0 30px rgba(21, 21, 21, 0.12)
+        background-color: rgba(2, 22, 35, 0.71)
+        hr
+            border: none
+            background: #fff
+            opacity: 0.5
+            height: 1px
+        input
+            display: block
+            background-color: rgba(255, 255, 255, 0)
+            color: #fff
+            border: none
+            width: 100%
+            font-family: Raleway
+            font-size: 15px
+            font-weight: 400
+            display: block
+            outline: none
+            &[name="subject"]
+                margin-top: 29px
+            &[name="email"]
+                margin-top: 27px
+        textarea
+            font-family: Raleway
+            font-size: 15px
+            font-weight: 400
+            display: block
+            color: #ffffff
+            background-color: rgba(2, 22, 35, 0)
+            border: none
+            width: 100%
+            margin-top: 30px
+            height: 90px
+            outline: none
+            resize: none
+        button
+            margin-top: 38px
+            width: 244px
+            height: 53px
+            border: none
+            background-color: #6eeee4
+            color: rgba(0, 0, 0, 0.7)
+            font-family: Montserrat
+            font-size: 18px
+            font-weight: 400
+            text-align: center
+            text-transform: uppercase
+            letter-spacing: 2.16px
+    .address
+        display: inline-block
+        width: 500px
+        height: 461px
+        padding: 36px 23px 19px 22px
+        box-shadow: 0 0 3px rgba(21, 21, 21, 0.16)
+        background-color: rgba(2, 22, 35, 0.71)
+        color: #ffffff
+        font-family: Raleway
+        font-size: 15px
+        font-weight: 400
+        text-align: left
+        a
+            color: #ffffff
+            font-family: Raleway
+            font-size: 15px
+            font-weight: 400
+            text-align: left
+        img
+            margin-top: 23px
+
+footer
+    min-height: 316px
+    background-color: #262b2e
+    padding: 93px 0 152px 0
+    .footer-text
+        opacity: 0.8
+        color: #ffffff
+        font-family: Raleway
+        font-size: 16px
+        font-weight: 400
+        text-align: center
+        text-transform: uppercase
+    .wrapper
+        width: 205px
+        margin: 0 auto
+        margin-top: 19px
+        display: flex
+        justify-content: space-between
+        align-items: center
+        .items
+            width: 46px
+            height: 40px
+            background-color: #8a8a8a
+            opacity: 0.4
+            display: flex
+            justify-content: center
+            align-items: center
+            &:hover
+                transition: 0.3s all
+                opacity: 1
+                background-color: #71f6eb
