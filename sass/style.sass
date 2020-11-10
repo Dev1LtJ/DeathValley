@@ -198,9 +198,12 @@ html
                 justify-content: space-between
                 align-items: center
                 vertical-align: bottom
-                img:hover
-                    transition: 0.3s all
-                    transform: scale(1.2)
+                a
+                    color: rgba(0, 0, 0, 0.7)
+                    text-decoration: none
+                    &:hover
+                        transition: 0.3s all
+                        transform: scale(1.2)
 
 
 .contacts
@@ -308,15 +311,19 @@ footer
         display: flex
         justify-content: space-between
         align-items: center
-        .items
-            width: 46px
-            height: 40px
-            background-color: rgba(138, 138, 138, 0.4)
-            display: flex
-            justify-content: center
-            align-items: center
-            cursor: pointer
-            &:hover
-                transition: 0.3s all
-                opacity: 1
-                background-color: #71f6eb
+        a
+            text-decoration: none
+            .items
+                width: 46px
+                height: 40px
+                background-color: rgba(138, 138, 138, 0.4)
+                display: flex
+                font-size: 21px
+                color: rgb(255, 255, 255)
+                justify-content: center
+                align-items: center
+                cursor: pointer
+                &:hover
+                    transition: 0.3s all
+                    opacity: 1
+                    background-color: #71f6eb
