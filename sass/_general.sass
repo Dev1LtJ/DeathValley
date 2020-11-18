@@ -133,39 +133,36 @@ html
     .rows-wrapper
         margin-top: 122px
         width: 100%
-        .col-md-4
-            padding: 0 7.5px 0 7.5px
         img
             width: 100%
         .padding
-            margin-top: 15px
+            margin-top: 30px
 
 .team
     min-height: 1360px
     padding: 99px 0 187px 0
     background-color: #f9fbfb
-    .container
-        padding: 0 7.5px 0 7.5px
     .rows-wrapper
         margin-top: 123px
         img
             width: 100%
         .padding
-            margin-top: 15px
+            margin-top: 30px
     .col-md-4
-        padding: 0 7.5px 0 7.5px
         position: relative
         &:hover
             .popup
-                display: block
+                transition: 1s all
+                opacity: 1
         .popup
-            display: none
+            display: block
+            opacity: 1
             position: absolute
-            width: 90%
+            width: 80%
             height: 55%
             background-color: rgba(109, 246, 235, 0.97)
-            top: 42%
-            right: 5%
+            top: 40%
+            right: 10%
             &::before
                 content: ''
                 position: absolute
@@ -186,8 +183,8 @@ html
                 &::after
                     content: '/ UI Designer'
                     position: absolute
-                    right: 25%
-                    bottom: -35%
+                    right: 17%
+                    bottom: -30%
                     font-family: "Merriweather"
                     font-size: 15px
                     font-style: italic
@@ -204,7 +201,7 @@ html
                 line-height: 22px
                 text-align: left
             &-icons-wrapper
-                margin: 10% 65% 0 10%
+                margin: 12% 65% 0 10%
                 display: flex
                 justify-content: space-between
                 align-items: center
