@@ -83,7 +83,6 @@ html
         font-size: 20px
         line-height: 20px
         font-weight: 700
-        text-transform: uppercase
     &__text
         color: rgba(0, 0, 0, 0.75)
         font-family: Raleway
@@ -158,6 +157,7 @@ html
                 bottom: 90%
                 right: 85%
             &__title
+                display: inline-block
                 position: relative
                 margin: 10% 0 0 10%
                 color: #272727
@@ -166,18 +166,19 @@ html
                 line-height: 20px
                 font-weight: 700
                 letter-spacing: 1px
+                text-transform: uppercase
                 text-align: left
-                &::after
-                    content: '/ UI Designer'
-                    position: absolute
-                    right: 17%
-                    bottom: -30%
-                    font-family: "Merriweather"
-                    font-size: 15px
-                    font-style: italic
-                    font-weight: 400
-                    letter-spacing: 0.45px
-                    color: #767070
+            &__pos
+                position: absolute
+                left: 105%
+                width: max-content
+                bottom: -35%
+                font-family: "Merriweather"
+                font-size: 15px
+                font-style: italic
+                font-weight: 400
+                letter-spacing: 0.45px
+                color: #767070
             &__text
                 margin: 10% 0 0 10%
                 width: 80%
