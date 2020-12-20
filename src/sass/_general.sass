@@ -332,6 +332,12 @@ html
     to
         width: 45%
 
+@keyframes zoomOut
+    from
+        width: 45%
+    to
+        width: 0%
+
 .overlay
     display: none
     position: fixed
@@ -349,9 +355,12 @@ html
     transform: translate(-50%, -50%)
     background-color: rgb(255, 255, 255)
     padding: 10px
-    animation: zoomIn 0.75s linear
-    img
+    &__img
         width: 100%
+    &_fadeIn
+        animation: zoomIn 0.75s linear
+    &_fadeOut
+        animation: zoomOut 0.75s linear
     &__close
         position: absolute
         top: 0
@@ -366,6 +375,37 @@ html
         left: 0
         color: #fff
         font-size: 14px
+    &__leftArrow
+        display: block
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        left: 33px
+        opacity: 0.33
+        img
+            width: 31px
+            height: 50px
+        &_hidden
+            display: none
+
+    &__rightArrow
+        display: block
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        right: 33px
+        opacity: 0.33
+        img
+            width: 31px
+            height: 50px
+        &_hidden
+            display: none
+
+@keyframes smoothShow
+    from
+        opacity: 0
+    to  
+        opacity: 1
 
 .pageup
     display: block
@@ -374,5 +414,8 @@ html
     right: 40px
     height: 40px
     width: 40px
+    animation: smoothShow 1s linear
     img
         width: 100%
+    &_hidden
+        display: none
