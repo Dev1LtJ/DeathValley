@@ -5,5 +5,5 @@ window.addEventListener('scroll', () => {
     window.pageYOffset > 1500 ? chevron.classList.remove('pageup_hidden') : chevron.classList.add('pageup_hidden');
 });
 
-chevron.onclick = () => window.scrollTo(0, 0);
-contactButton.onclick = () => document.querySelector('.contacts').scrollIntoView();
+chevron.onclick = () => document.documentElement.scrollIntoView({ behavior: 'smooth' });
+contactButton.onclick = () => document.querySelector('.contacts').scrollIntoView({ behavior: 'smooth' });
