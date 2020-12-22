@@ -28,7 +28,6 @@ html
             background-color: rgba(118, 244, 234, 0.5)
     &__btn
         margin: 150px auto 0 auto
-        padding-top: 11px
         width: 232px
         height: 53px
         display: block
@@ -401,12 +400,6 @@ html
         &_hidden
             display: none
 
-@keyframes smoothShow
-    from
-        opacity: 0
-    to  
-        opacity: 1
-
 .pageup
     display: block
     position: fixed
@@ -414,8 +407,10 @@ html
     right: 40px
     height: 40px
     width: 40px
-    animation: smoothShow 1s linear
+    opacity: 1
+    transition: opacity 2s
+    &_fade
+        opacity: 0
     img
         width: 100%
-    &_hidden
-        display: none
+        cursor: pointer
