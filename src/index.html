@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
-    <section class="promo">
+    <section class="promo" id="up">
         <div class="container">
             <div class="promo__logo">
                 <img class="promo__img" src="icons/logo.png" alt="logo">
@@ -20,7 +20,7 @@
                 Say Hello to <span>SHOPNO!</span><br>
                 <span>Agency</span> CORPORATE SHOPNO Theme
             </h1>
-            <a href="#buttoner" class="promo__btn">CONTACT US</a>
+            <button data-scroll-id="contactus" class="promo__btn">CONTACT US</button>
             <div class="promo__juice">
                 <img class="promo__juice-cork" src="icons/juice-cork.png" alt="juice-cork">
                 <img class="promo__juice-glass" src="icons/juice-glass.png" alt="juice-glass">
@@ -114,7 +114,7 @@
             </div>
         </div>
     </section>
-    <section class="contacts">
+    <section class="contacts" id="contactus">
         <div class="container">
             <div class="contacts__contact-us">
                 <input class="contacts__input" type="text" placeholder="Name*" name="name" required>
@@ -172,9 +172,9 @@
             <div class="modal__rightArrow"><img src="icons/right.svg" alt="rightArrow"></div>
         </div>
     </div>
-    <a href="#up" class="pageup pageup_hidden">
-        <img src="icons/chevron.svg" alt="up">
-    </a>
+    <div class="pageup pageup_fade">
+        <img data-scroll-id="up" src="icons/chevron.svg" alt="up">
+    </div>
     <script src="js/team.js"></script>
     <script src="js/zoom.js"></script>
     <script src="js/scroll.js"></script>

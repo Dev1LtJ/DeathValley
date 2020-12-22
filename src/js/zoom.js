@@ -7,6 +7,13 @@ let pictureSet = document.querySelectorAll('.featured__img'),
     rightArrow = document.querySelector('.modal__rightArrow'),
     modalText = document.querySelector('.modal__subtitle');
 
+// window.addEventListener('click', (event) => {
+//     let image = event.target;
+//     if (image.className != "featured__img") return;
+//     overlay.classList.add('overlay_active');
+
+// });
+
 pictureSet.forEach(function (item, index, array) {
     item.onclick = function () {
         overlay.classList.add('overlay_active');
@@ -66,9 +73,3 @@ rightArrow.addEventListener ('mouseover', () => {
 rightArrow.addEventListener ('mouseout', () => {
     rightArrow.style.opacity = '0.33';
 });
-
-// leftArrow.addEventListener('hide', () => {
-
-// });
-// index == 6 ? rightArrow.classList.add('modal_rightArrow_hidden') : rightArrow.classList.remove('modal_rightArrow_hidden');
-// index == 0 ? leftArrow.classList.add('modal_leftArrow_hidden') : leftArrow.classList.remove('modal_leftArrow_hidden');

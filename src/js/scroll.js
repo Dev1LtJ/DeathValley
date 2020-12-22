@@ -1,9 +1,13 @@
-let chevron = document.querySelector('.pageup'),
-    contactButton = document.querySelector('.promo__btn');
+let chevron = document.querySelector('.pageup');
 
 window.addEventListener('scroll', () => {
-    window.pageYOffset > 1500 ? chevron.classList.remove('pageup_hidden') : chevron.classList.add('pageup_hidden');
+    window.pageYOffset > 1500 ? chevron.classList.remove('pageup_fade') : chevron.classList.add('pageup_fade');
 });
 
-chevron.onclick = () => document.documentElement.scrollIntoView({ behavior: 'smooth' });
-contactButton.onclick = () => document.querySelector('.contacts').scrollIntoView({ behavior: 'smooth' });
+window.addEventListener('click', (event) => {
+    let elem = event.target.dataset.scrollId;
+    if (!elem) return;
+    let targetElement = document.getElementById(elem);
+    targetElement.scrollIntoView({ behavior: 'smooth' });
+});
+
