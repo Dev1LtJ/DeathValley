@@ -10,4 +10,3 @@ window.addEventListener('click', (event) => {
     let targetElement = document.getElementById(elem);
     targetElement.scrollIntoView({ behavior: 'smooth' });
 });
-

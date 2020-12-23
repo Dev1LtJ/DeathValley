@@ -1,75 +1,118 @@
-let pictureSet = document.querySelectorAll('.featured__img'),
+let modalFrame = document.querySelector('.modal'),
+    actualModalFrameWidth = 1,
     overlay = document.querySelector('.overlay'),
-    modalFrame = document.querySelector('.modal'),
     closeButton = document.querySelector('.modal__close'),
     modalImage = document.querySelector('.modal__img'),
-    leftArrow = document.querySelector('.modal__leftArrow'),
-    rightArrow = document.querySelector('.modal__rightArrow'),
-    modalText = document.querySelector('.modal__subtitle');
+    left = document.querySelector('.modal__left'),
+    right = document.querySelector('.modal__right'),
+    modalText = document.querySelector('.modal__subtitle'),
+    pictureSet = document.querySelectorAll('.featured__img');
 
-// window.addEventListener('click', (event) => {
-//     let image = event.target;
-//     if (image.className != "featured__img") return;
-//     overlay.classList.add('overlay_active');
 
-// });
-
-pictureSet.forEach(function (item, index, array) {
-    item.onclick = function () {
-        overlay.classList.add('overlay_active');
-        modalFrame.classList.remove('modal_fadeOut');
-        modalFrame.classList.add('modal_fadeIn');
-        modalImage.setAttribute('src', item.getAttribute('src'));
-        modalImage.setAttribute('alt', item.getAttribute('alt'));
-        modalText.innerHTML = `Image ${index + 1} of ${array.length}`;
-        if (index == 0) {
-            leftArrow.classList.add('modal__leftArrow_hidden');
-            rightArrow.classList.remove('modal__rightArrow_hidden');
-        } else if (index == array.length - 1) {
-            rightArrow.classList.add('modal__rightArrow_hidden');
-            leftArrow.classList.remove('modal__leftArrow_hidden');
-        }
-        //Почему при вынесении leftArrow и rightArrow за пределы item неправильно работает index?
-        //Почему индекс прыгает два раза?
-        leftArrow.addEventListener ('click', () => {
-            rightArrow.classList.remove('modal__rightArrow_hidden');
-            modalImage.setAttribute('src', array[index > 0 ? --index : index = 0].getAttribute('src'));
-            modalImage.setAttribute('alt', array[index].getAttribute('alt'));
-            modalText.innerHTML = `Image ${index + 1} of ${array.length}`;
-            if (index == 0) leftArrow.classList.add('modal__leftArrow_hidden');
-            console.log(index);
+pictureSet.forEach(function (image, index, array) {
+    image.addEventListener('click', () => {
+        overlayToggle ();
+        showImage(modalImage, image);
+        modalIn(modalFrame);
+        showMessage(modalText, index, array);
+        hideArrow(index);
+        right.addEventListener('click', () => {
+            showImage(modalImage, array[++index]);
+            hideArrow(index);
+            showMessage(modalText, index, array);
         });
-        rightArrow.addEventListener ('click', () => {
-            leftArrow.classList.remove('modal__leftArrow_hidden');
-            modalImage.setAttribute('src', array[index < (array.length - 1) ? ++index : index = (array.length - 1)].getAttribute('src'));
-            modalImage.setAttribute('alt', array[index].getAttribute('alt'));
-            modalText.innerHTML = `Image ${index + 1} of ${array.length}`;
-            if (index == array.length - 1) rightArrow.classList.add('modal__rightArrow_hidden');
-            console.log(index);
+        left.addEventListener('click', () => {
+            showImage(modalImage, array[--index]);
+            hideArrow(index);
+            showMessage(modalText, index, array);
         });
-    };
+    });
 });
 
-function removeOverlay () {
-    modalFrame.classList.remove('modal_fadeIn');
-    modalFrame.classList.add('modal_fadeOut');
+closeButton.addEventListener('click', () => {
+    secondaryInOut ();
+    setTimeout(() => {modalOut(modalFrame)}, 1000);
+});
+
+right.addEventListener('mouseover', () => {right.style.opacity = '1';});
+right.addEventListener('mouseout', () => {right.style.opacity = '0.33';});
+left.addEventListener('mouseover', () => {left.style.opacity = '1';});
+left.addEventListener('mouseout', () => {left.style.opacity = '0.33';});
+
+
+function modalIn (elem) {
+    let elemWidth = actualModalFrameWidth;
+    elem.style.display = 'block';
+    let timer = setTimeout(function run() {
+        if (elemWidth >= 45) {
+            clearTimeout(timer);
+            secondaryInOut ();
+        } else {
+            elem.style.width = elemWidth + '%';
+            elemWidth = elemWidth + elemWidth * 0.05;
+            setTimeout(run, 10);
+            actualModalFrameWidth = elemWidth;
+        }
+    }, 10);
+}
+
+function modalOut (elem) {
+    let elemWidth = actualModalFrameWidth;
+    let timer = setTimeout(function run() {
+        if (elemWidth <= 1) {
+            clearTimeout(timer);
+            clearImage(modalImage);
+            elem.style.display = 'none';
+            showArrows ();
+            overlayToggle ();
+        } else {
+            elem.style.width = elemWidth + '%';
+            elemWidth = elemWidth - elemWidth * 0.05;
+            setTimeout(run, 10);
+            actualModalFrameWidth = elemWidth;
+        }
+    }, 10);
+}
+
+function secondaryInOut () {
+    setTimeout(() => {
+        closeButton.classList.toggle('modal__close_fade');
+        modalText.classList.toggle('modal__subtitle_fade');
+        left.classList.toggle('modal__left_fade');
+        right.classList.toggle('modal__right_fade');
+    }, 50);
+}
+
+function overlayToggle () {
+    overlay.classList.toggle('overlay_fade');
+}
+
+function showImage (modalImage, targetImage) {
+    modalImage.setAttribute('src', targetImage.getAttribute('src'));
+    modalImage.setAttribute('alt', targetImage.getAttribute('alt'));
+}
+
+function clearImage (modalImage) {
     modalImage.setAttribute('src', '');
     modalImage.setAttribute('alt', '');
-    leftArrow.classList.remove('modal__leftArrow_hidden');
-    rightArrow.classList.remove('modal__rightArrow_hidden');
-    overlay.classList.remove('overlay_active');
 }
-closeButton.onclick = removeOverlay;
 
-leftArrow.addEventListener ('mouseover', () => {
-    leftArrow.style.opacity = '1';
-});
-leftArrow.addEventListener ('mouseout', () => {
-    leftArrow.style.opacity = '0.33';
-});
-rightArrow.addEventListener ('mouseover', () => {
-    rightArrow.style.opacity = '1';
-});
-rightArrow.addEventListener ('mouseout', () => {
-    rightArrow.style.opacity = '0.33';
-});
+function hideArrow (index) {
+    if (index == 0) {
+        left.hidden = true;
+    } else if (index == pictureSet.length - 1) {
+        right.hidden = true;
+    } else {
+        left.hidden = false;
+        right.hidden = false;
+    }
+}
+
+function showArrows () {
+    left.hidden = false;
+    right.hidden = false;
+}
+
+function showMessage(elem, index, array) {
+    elem.innerHTML = `Image ${index + 1} of ${array.length}`;
+}
