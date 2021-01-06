@@ -34,8 +34,9 @@ function makeCarousel () {
 }
 
 closeButton.addEventListener('click', () => {
+    hideArrows ();
     secondaryInOut ();
-    setTimeout(() => {modalOut(modalFrame)}, 1000);
+    setTimeout(() => modalOut(modalFrame), 1000);
 });
 
 right.addEventListener('mouseover', () => {right.style.opacity = '1';});
@@ -51,6 +52,7 @@ function modalIn (elem) {
         if (elemWidth >= 45) {
             clearTimeout(timer);
             secondaryInOut ();
+            showArrows ();
         } else {
             elem.style.width = elemWidth + '%';
             elemWidth = elemWidth + elemWidth * 0.05;
@@ -67,7 +69,6 @@ function modalOut (elem) {
             clearTimeout(timer);
             clearImage(modalImage);
             elem.style.display = 'none';
-            showArrows ();
             overlayToggle ();
         } else {
             elem.style.width = elemWidth + '%';
@@ -83,9 +84,7 @@ function secondaryInOut () {
         closeButton.classList.toggle('modal__close_fade');
         modalText.classList.toggle('modal__subtitle_fade');
         left.classList.toggle('modal__left_fade');
-        //left.hidden == true ? left.hidden = false : left.hidden = true;
         right.classList.toggle('modal__right_fade');
-        //right.hidden == true ? right.hidden = false : right.hidden = true;
     }, 50);
 }
 
@@ -117,6 +116,15 @@ function hideArrow (index) {
 function showArrows () {
     left.hidden = false;
     right.hidden = false;
+    left.style.opacity = '0.33';
+    right.style.opacity = '0.33';
+}
+
+function hideArrows () {
+    left.style.opacity = '0';
+    right.style.opacity = '0';
+    left.hidden = true;
+    right.hidden = true;
 }
 
 function showMessage(elem, index, array) {
