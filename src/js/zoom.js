@@ -6,28 +6,32 @@ let modalFrame = document.querySelector('.modal'),
     left = document.querySelector('.modal__left'),
     right = document.querySelector('.modal__right'),
     modalText = document.querySelector('.modal__subtitle'),
-    pictureSet = document.querySelectorAll('.featured__img');
+    pictureSet = document.querySelectorAll('.featured__img'),
+    pictureWrapper = document.querySelector('.featured__rows-wrapper').firstElementChild;
 
+    pictureWrapper.addEventListener('click', makeCarousel);
 
-pictureSet.forEach(function (image, index, array) {
-    image.addEventListener('click', () => {
-        overlayToggle ();
-        showImage(modalImage, image);
-        modalIn(modalFrame);
-        showMessage(modalText, index, array);
+function makeCarousel () {
+    if (event.target.tagName != 'IMG') return;
+    let image = event.target,
+        index = image.dataset.id,
+        array = pictureSet;
+    overlayToggle();
+    showImage(modalImage, image);
+    modalIn(modalFrame);
+    showMessage(modalText, index, array);
+    hideArrow(index);
+    right.addEventListener('click', () => {
+        showImage(modalImage, array[++index]);
         hideArrow(index);
-        right.addEventListener('click', () => {
-            showImage(modalImage, array[++index]);
-            hideArrow(index);
-            showMessage(modalText, index, array);
-        });
-        left.addEventListener('click', () => {
-            showImage(modalImage, array[--index]);
-            hideArrow(index);
-            showMessage(modalText, index, array);
-        });
+        showMessage(modalText, index, array);
     });
-});
+    left.addEventListener('click', () => {
+        showImage(modalImage, array[--index]);
+        hideArrow(index);
+        showMessage(modalText, index, array);
+    });
+}
 
 closeButton.addEventListener('click', () => {
     secondaryInOut ();
@@ -79,7 +83,9 @@ function secondaryInOut () {
         closeButton.classList.toggle('modal__close_fade');
         modalText.classList.toggle('modal__subtitle_fade');
         left.classList.toggle('modal__left_fade');
+        //left.hidden == true ? left.hidden = false : left.hidden = true;
         right.classList.toggle('modal__right_fade');
+        //right.hidden == true ? right.hidden = false : right.hidden = true;
     }, 50);
 }
 
@@ -100,7 +106,7 @@ function clearImage (modalImage) {
 function hideArrow (index) {
     if (index == 0) {
         left.hidden = true;
-    } else if (index == pictureSet.length - 1) {
+    } else if (index == pictureSet.length-1) {
         right.hidden = true;
     } else {
         left.hidden = false;
@@ -114,5 +120,5 @@ function showArrows () {
 }
 
 function showMessage(elem, index, array) {
-    elem.innerHTML = `Image ${index + 1} of ${array.length}`;
+    elem.innerHTML = `Image ${+index + 1} of ${array.length}`;
 }
